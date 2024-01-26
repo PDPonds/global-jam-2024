@@ -52,6 +52,17 @@ public class Dialog : MonoBehaviour
 
     }
 
+    public bool CheckAllTextInDialog()
+    {
+        string text = string.Empty;
+        foreach (TextType t in line)
+        {
+            text += t.text;
+        }
+
+        return dialogText.text == text;
+    }
+
 
 }
 

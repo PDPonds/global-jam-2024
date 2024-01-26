@@ -7,23 +7,55 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    #region Game State
+    public BaseState currentState;
+
+    public StanbyState stanbyState = new StanbyState();
+    public DialogState dialogState = new DialogState();
+    public LaughState laughState = new LaughState();
+    public ResultState resultState = new ResultState();
+    #endregion
+
+    [Header("===== Dialog =====")]
+    public GameObject dialogObj;
+    public Dialog dialog;
+    [SerializeField] int textCount;
+    bool isLaugh;
+
+    [Header("===== Laugh =====")]
+    public GameObject laughtBar;
+    public float fillLaughSpeed;
+    [SerializeField] float startLaughPoint;
+    [SerializeField] float endLaughPoint;
+    [SerializeField] float bigPointSize;
+
     private void Awake()
     {
         Instance = this;
     }
 
-    [SerializeField] Dialog dialog;
-    [SerializeField] int textCount;
-    [SerializeField] bool isLaugh;
-
     private void Start()
     {
-        GenerateDialog();
+        SwitchState(stanbyState);
+    }
+
+    private void Update()
+    {
+        currentState.UpdateState(transform.gameObject);
+    }
+
+    public void SwitchState(BaseState state)
+    {
+        currentState = state;
+        currentState.EnterState(transform.gameObject);
     }
 
     public void GenerateDialog()
     {
         dialog.line.Clear();
+
+        int isLaughtCount = UnityEngine.Random.Range(0, 10);
+        isLaugh = isLaughtCount > 5;
 
         int emojiCount = textCount / 2;
 
@@ -141,7 +173,6 @@ public class GameManager : MonoBehaviour
 
         dialog.ActiveDialog();
     }
-
 
     void ShuffleSentence()
     {
