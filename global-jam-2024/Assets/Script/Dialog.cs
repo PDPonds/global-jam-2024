@@ -7,30 +7,25 @@ using UnityEngine;
 public class Dialog : MonoBehaviour
 {
     public TextMeshProUGUI dialogText;
-    public textType[] line;
+    public List<TextType> line = new List<TextType>();
     public float speed;
 
     int index;
 
-    void Start()
+    public void ActiveDialog()
     {
         dialogText.text = string.Empty;
         index = 0;
         StartCoroutine(StartTypeDialog());
-
-    }
-
-    void Update()
-    {
     }
 
     IEnumerator StartTypeDialog()
     {
-        foreach (textType t in line)
+        foreach (TextType t in line)
         {
-            if (t.isEmogi)
+            if (t.isEmoji)
             {
-                DrawEmogi();
+                DrawEmoji();
                 yield return new WaitForSeconds(speed);
             }
             else
@@ -40,7 +35,7 @@ public class Dialog : MonoBehaviour
         }
     }
 
-    void DrawEmogi()
+    void DrawEmoji()
     {
         dialogText.text += line[index].text;
         index++;
@@ -61,8 +56,8 @@ public class Dialog : MonoBehaviour
 }
 
 [Serializable]
-public class textType
+public class TextType
 {
     public string text;
-    public bool isEmogi;
+    public bool isEmoji;
 }
