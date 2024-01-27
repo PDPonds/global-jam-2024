@@ -25,7 +25,7 @@ public class SoundTestRoom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float currentSoundPower = AudioLoudnessDetection.GetLoudnessFromMicrophone();
+        float currentSoundPower = ((Mathf.Round(AudioLoudnessDetection.GetLoudnessFromMicrophone() * 100f)) / 100.0f);
 
         if (currentSoundPower >= _maximumSoundPower) 
         {
@@ -33,7 +33,7 @@ public class SoundTestRoom : MonoBehaviour
             _soundPower.text = _maximumSoundPower.ToString();
         }
 
-        _laughThreshold.text = AudioLoudnessDetection.Threshold.ToString("F2");
+        _laughThreshold.text =( (Mathf.Round(AudioLoudnessDetection.Threshold * 100f)) / 100.0f).ToString();
 
         _micMode.text = AudioLoudnessDetection.micMode.ToString();
     }
