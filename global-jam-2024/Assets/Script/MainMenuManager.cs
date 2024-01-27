@@ -9,12 +9,16 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField]
     private Button _exitButton;
 
+    [SerializeField]
+    private Button _soundTestButton;
+
     private bool hasStart;
 
     void Start()
     {
         AudioLoudnessDetection.InstantiateMicrophoneToAudioClip();
         _exitButton.onClick.AddListener(Exit);
+        _soundTestButton.onClick.AddListener(GoToSoundTest);
     }
 
     private void Update()
@@ -40,7 +44,19 @@ public class MainMenuManager : MonoBehaviour
 
     private void Exit()
     {
-        FadingUI.Instance.StartFadeOut();
+        FadingUI.Instance.OnStopFading.AddListener(Application.Quit);
+        FadingUI.Instance.StartFadeIn();
+    }
+
+    private void GoToSoundTest() 
+    {
+        FadingUI.Instance.OnStopFading.AddListener(LoadSoundTest);
+        FadingUI.Instance.StartFadeIn();
+    }
+
+    private void LoadSoundTest()
+    {
+        SceneManager.LoadScene("SoundTestRoom");
     }
 
     private void GoToGameScene() 

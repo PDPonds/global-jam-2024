@@ -2,7 +2,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
-
+using TMPro;
 public enum FadingPhase
 {
     FadeIn,
@@ -31,9 +31,17 @@ public class FadingUI : MonoBehaviour
     [SerializeField]
     private Image fadeImage;
 
+    [SerializeField]
+    private TextMeshProUGUI _currentSoundValue;
+
+    [SerializeField]
+    private TextMeshProUGUI _currentSoundThreshold;
+
     public UnityEvent OnStopFading;
     private bool fading;
     private FadingPhase currentFadingPhase;
+
+
 
     private void Awake()
     {
@@ -71,6 +79,9 @@ public class FadingUI : MonoBehaviour
                 }
             }
         }
+
+        _currentSoundValue.text = AudioLoudnessDetection.GetLoudnessFromMicrophone().ToString();
+        _currentSoundThreshold.text = AudioLoudnessDetection.Threshold.ToString();
     }
 
     public void StartFadeIn() 
