@@ -4,7 +4,7 @@ using UnityEngine;
 public enum MicMode
 {
     Toggle,
-    AlwaysTurnOn
+    Always
 }
 
 public static class AudioLoudnessDetection
@@ -29,7 +29,7 @@ public static class AudioLoudnessDetection
             {
                 TurnOnMute();
             }
-            else if (Input.GetKeyUp(KeyCode.T))
+            else 
             {
                 TurnOffMute();
             }

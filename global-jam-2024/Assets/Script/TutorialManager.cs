@@ -16,10 +16,7 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        foreach (Button _button in _nextButtonList) 
-        {
-            _button.onClick.AddListener(Next);
-        }
+
     }
 
     private void Update()
