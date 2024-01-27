@@ -67,7 +67,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void GoToGameScene() 
     {
-        SceneManager.LoadScene("TutorialScene");
+        SceneManager.LoadScene("SoundTestRoom");
     }
 
 }

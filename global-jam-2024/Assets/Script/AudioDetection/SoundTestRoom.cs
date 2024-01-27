@@ -13,6 +13,9 @@ public class SoundTestRoom : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _laughThreshold;
 
+    [SerializeField]
+    private TextMeshProUGUI _micMode;
+
     float _maximumSoundPower;
     void Start()
     {
@@ -31,6 +34,13 @@ public class SoundTestRoom : MonoBehaviour
         }
 
         _laughThreshold.text = AudioLoudnessDetection.Threshold.ToString();
+
+        _micMode.text = AudioLoudnessDetection.micMode.ToString();
+
+        if (Input.GetKeyDown("space"))
+        {
+            SceneManager.LoadScene("TutorialScene");
+        }
     }
 
     public void ResetSoundPower() 
@@ -40,7 +50,7 @@ public class SoundTestRoom : MonoBehaviour
 
     public void ResetThreshold()
     {
-        AudioLoudnessDetection.Threshold =0.5f;
+        AudioLoudnessDetection.Threshold =0.3f;
     }
 
     public void EditSoundThreshold(string newThreshold) 
@@ -55,5 +65,17 @@ public class SoundTestRoom : MonoBehaviour
     public void Back() 
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ChangeToggleMode() 
+    {
+        if (AudioLoudnessDetection.micMode == MicMode.AlwaysTurnOn)
+        {
+            AudioLoudnessDetection.micMode = MicMode.Toggle;
+        }
+        else 
+        {
+            AudioLoudnessDetection.micMode = MicMode.AlwaysTurnOn;
+        }
     }
 }

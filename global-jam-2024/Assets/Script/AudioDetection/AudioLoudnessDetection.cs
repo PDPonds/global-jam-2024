@@ -1,8 +1,15 @@
 using UnityEngine;
 
+
+public enum MicMode
+{
+    Toggle,
+    AlwaysTurnOn
+}
+
 public static class AudioLoudnessDetection
 {
-    public static float Threshold = 0.2f;
+    public static float Threshold = 0.3f;
 
     private const int _sampleWindow = 64;
 
@@ -10,11 +17,44 @@ public static class AudioLoudnessDetection
 
     public static bool isDisable;
 
-    public static bool isMute;
+    public static bool isMute = true;
+
+    public static MicMode micMode = MicMode.Toggle;
+
+    public static void HandleMute() 
+    {
+        if (micMode == MicMode.Toggle)
+        {
+            if (Input.GetKey(KeyCode.T))
+            {
+                TurnOnMute();
+            }
+            else if (Input.GetKeyUp(KeyCode.T))
+            {
+                TurnOffMute();
+            }
+        }
+        else 
+        {
+            isMute = false;
+        }
+
+
+    }
 
     public static void SetMute() 
     {
         isMute = !isMute;
+    }
+
+    public static void TurnOnMute()
+    {
+        isMute = false;
+    }
+
+    public static void TurnOffMute()
+    {
+        isMute = true;
     }
 
     public static void InstantiateMicrophoneToAudioClip() 
