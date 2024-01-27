@@ -18,12 +18,13 @@ public class StanbyState : BaseState
 
         SupremeManager.instance.SetBoolAnim("isTalk", false);
 
+        SoundManager.Instance.ChageVolume("BGM", 0.05f);
     }
 
     public override void UpdateState(GameObject go)
     {
         currentTime -= Time.deltaTime;
-        if(currentTime < 0)
+        if (currentTime < 0)
         {
             GameManager.Instance.SwitchState(GameManager.Instance.dialogState);
         }

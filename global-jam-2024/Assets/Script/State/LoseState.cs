@@ -7,7 +7,7 @@ public class LoseState : BaseState
 {
     public override void EnterState(GameObject go)
     {
-
+        SoundManager.Instance.ChageVolume("BGM", 1f);
     }
 
     public override void UpdateState(GameObject go)

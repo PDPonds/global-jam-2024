@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,8 @@ public class LaughState : BaseState
         GameManager.Instance.laughtBar.SetActive(true);
         currentPoint = 0;
         GameManager.Instance.debugText.gameObject.SetActive(false);
+
+        SoundManager.Instance.Stop("TypeText");
     }
 
     public override void UpdateState(GameObject go)
@@ -33,18 +36,21 @@ public class LaughState : BaseState
             {
                 if(GameManager.Instance.isLaugh)
                 {
+                    PlayerMananger.instance.PlayLaughSound(0.5f);
                     PlayerMananger.instance.HitButton();
                 }
                 else
                 {
                     PlayerMananger.instance.NoHitButton();
+                    SoundManager.Instance.PlayOneShot("Swallow");
                 }
             }
             else
             {
                 PlayerMananger.instance.NoHitButton();
+                SoundManager.Instance.PlayOneShot("Swallow");
             }
-            
+
             GameManager.Instance.SwitchState(GameManager.Instance.resultState);
         }
         
@@ -52,6 +58,7 @@ public class LaughState : BaseState
         {
             if (currentPoint >= 100f)
             {
+                SoundManager.Instance.PlayOneShot("Swallow");
                 PlayerMananger.instance.NoHitButton();
             }
 
