@@ -5,20 +5,69 @@ using UnityEngine.UI;
 
 public class LaughState : BaseState
 {
-    float startPoint = 0;
-    float targetPoint = 100f;
+    float currentPoint = 0;
+
+    int midTargetPoint = 75;
+
     public override void EnterState(GameObject go)
     {
         GameManager.Instance.laughtBar.SetActive(true);
+        currentPoint = 0;
     }
 
     public override void UpdateState(GameObject go)
     {
-        startPoint += Time.deltaTime * GameManager.Instance.fillLaughSpeed;
+        currentPoint += Time.deltaTime * (GameManager.Instance.fillLaughSpeed  * 2);
 
-        Slider slider = GameManager.Instance.laughtBar.GetComponent<Slider>();
-        slider.value = startPoint;
-        slider.maxValue = targetPoint;
+        Image fill = GameManager.Instance.laughFill.GetComponent<Image>();
+        fill.fillAmount = currentPoint / 100f;
+
+        float startLaughPoint = midTargetPoint - (GameManager.Instance.laughPointSize / 2f);
+        float endLaughPoint = midTargetPoint + (GameManager.Instance.laughPointSize / 2f);
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (currentPoint >= startLaughPoint && currentPoint <= endLaughPoint)
+            {
+                if(GameManager.Instance.isLaugh)
+                {
+                    GameManager.Instance.AddMood(15f);
+                    GameManager.Instance.dialog.RemoveSpeed();
+                    
+                }
+                else
+                {
+                    GameManager.Instance.RemoveMood(10f);
+                    GameManager.Instance.dialog.AddSpeed();
+                }
+            }
+            else
+            {
+                GameManager.Instance.RemoveMood(10f);
+                GameManager.Instance.dialog.AddSpeed();
+            }
+
+            GameManager.Instance.SwitchState(GameManager.Instance.resultState);
+
+        }
+        
+        if(GameManager.Instance.isLaugh)
+        {
+            if (currentPoint >= 100f)
+            {
+                GameManager.Instance.RemoveMood(10f);
+                GameManager.Instance.dialog.AddSpeed();
+                GameManager.Instance.SwitchState(GameManager.Instance.resultState);
+            }
+
+        }
+        else
+        {
+            if (currentPoint >= 100f)
+            {
+                GameManager.Instance.SwitchState(GameManager.Instance.resultState);
+            }
+        }
 
     }
 }
