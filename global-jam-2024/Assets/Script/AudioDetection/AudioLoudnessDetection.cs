@@ -2,11 +2,13 @@ using UnityEngine;
 
 public static class AudioLoudnessDetection
 {
-    public static float Threshold = 0.5f;
+    public static float Threshold = 0.3f;
 
     private const int _sampleWindow = 64;
 
     private static AudioClip _microphoneClip;
+
+    public static bool isMute;
 
     public static void InstantiateMicrophoneToAudioClip() 
     {
@@ -49,5 +51,10 @@ public static class AudioLoudnessDetection
     public static bool IsMoreThanThreshold() 
     {
         return (GetLoudnessFromMicrophone() >= Threshold);
+    }
+
+    public static void SetMute(bool mute) 
+    {
+        isMute = mute;
     }
 }

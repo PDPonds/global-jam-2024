@@ -11,6 +11,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField]
     List<Button> _nextButtonList = new List<Button>();
     private int currentIndex = 0;
+    private float muteCooldonw = 3.0f;
 
     private void Start()
     {
@@ -22,20 +23,34 @@ public class TutorialManager : MonoBehaviour
 
     private void Update()
     {
-        if (AudioLoudnessDetection.IsMoreThanThreshold() || Input.GetKeyDown("space"))
-        {
-            StartCoroutine(DelayNext());
-        }
-    }
 
-    IEnumerator DelayNext() 
-    {
-        yield return new WaitForSeconds(1.0f);
-        Next();
+
+        if (AudioLoudnessDetection.isMute)
+        {
+            muteCooldonw -= Time.deltaTime;
+            if (muteCooldonw <= 0)
+            {
+                AudioLoudnessDetection.SetMute(false);
+            }
+        }
+        else 
+        {
+            if (AudioLoudnessDetection.IsMoreThanThreshold() || Input.GetKeyDown("space"))
+            {
+                Next();
+                AudioLoudnessDetection.SetMute(true);
+                muteCooldonw = 3.0f;
+            }
+        }
     }
 
     public void Next() 
     {
+        if (currentIndex > _tutorialList.Count - 1) 
+        {
+            return;
+        }
+
         _tutorialList[currentIndex].SetActive(false);
         currentIndex++;
         if (currentIndex >= _tutorialList.Count)

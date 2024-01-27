@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/SoundTestRoom.unity
+    guid: 9490397104458b64db1f73f21963b04a
   m_configObjects: {}
