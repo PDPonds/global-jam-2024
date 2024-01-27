@@ -16,6 +16,8 @@ public class SoundManager : MonoBehaviour
 
     public SoundClass[] Sounds;
 
+    public string[] laughSoundList;
+
     [SerializeField]
     float masterVolume = 1.0f;
 
@@ -258,10 +260,10 @@ public class SoundManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found...");
             return;
         }
-        StartCoroutine(dropVolume(s.Source));
+        StartCoroutine(dropVolumeToZero(s.Source));
     }
 
-    IEnumerator dropVolume(AudioSource source)
+    IEnumerator dropVolumeToZero(AudioSource source)
     {
         while (source.volume > 0)
         {
@@ -270,4 +272,23 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void ChageVolume(string name, float volume)
+    {
+        SoundClass s = Array.Find(Sounds, Sound => Sound.Name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found...");
+            return;
+        }
+        StartCoroutine(dropVolume(s.Source, volume));
+    }
+
+    IEnumerator dropVolume(AudioSource source, float volume)
+    {
+        while (source.volume > volume)
+        {
+            source.volume -= Time.deltaTime;
+            yield return null;
+        }
+    }
 }
