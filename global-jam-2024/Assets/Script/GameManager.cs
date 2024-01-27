@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
 
     [Header("===== Lose =====")]
     public GameObject loseUI;
+    public GameObject cageObj;
 
     [Header("===== Win =====")]
     public GameObject winUI;
@@ -88,7 +89,7 @@ public class GameManager : MonoBehaviour
 
         if (isLaugh)
         {
-            int dif = UnityEngine.Random.Range(0, 3);
+            int dif = UnityEngine.Random.Range(5, 10);
             int laughEmoji = (emojiCount / 2) + dif;
             int exceptLaughEmoji = (emojiCount / 2) - dif;
             int text = textCount - emojiCount;
@@ -149,7 +150,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            int dif = UnityEngine.Random.Range(0, 3);
+            int dif = UnityEngine.Random.Range(5, 10);
             int laughEmoji = (emojiCount / 2) + dif;
             int exceptLaughEmoji = (emojiCount / 2) - dif;
             int text = textCount - emojiCount;
@@ -242,8 +243,13 @@ public class GameManager : MonoBehaviour
         SupremeManager.instance.PlayAnimation("Slam");
         yield return new WaitForSeconds(.3f);
         StartCoroutine(camShake.Shake(0.2f, .1f));
-        yield return new WaitForSeconds(1f);
+        
+        Animator cageAnim = cageObj.GetComponent<Animator>();
+        cageAnim.Play("Drop");
+
+        yield return new WaitForSeconds(2f);
         loseUI.SetActive(true);
     }
+
 
 }

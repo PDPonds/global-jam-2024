@@ -7,16 +7,11 @@ public class SupremeManager : MonoBehaviour
     public static SupremeManager instance;
 
     public Transform mesh;
-    Animator anim;
+    public Animator anim;
 
     private void Awake()
     {
         instance = this;
-    }
-
-    private void Start()
-    {
-        anim = mesh.GetComponent<Animator>();
     }
 
     public void PlayAnimation(string name)
