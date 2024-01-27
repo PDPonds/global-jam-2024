@@ -30,6 +30,8 @@ public class WinState : BaseState
             {
                 SoundManager.Instance.Stop("Cheer");
                 SoundManager.Instance.Stop("SecretBGM");
+                SoundManager.Instance.ChangePitch("BGM2", 1f);
+                SoundManager.Instance.Stop("BGM2");
                 SceneManager.LoadScene(0);
             }
         }
