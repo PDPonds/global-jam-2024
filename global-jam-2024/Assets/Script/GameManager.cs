@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,14 +21,22 @@ public class GameManager : MonoBehaviour
     public GameObject dialogObj;
     public Dialog dialog;
     [SerializeField] int textCount;
-    bool isLaugh;
+    public bool isLaugh;
 
     [Header("===== Laugh =====")]
     public GameObject laughtBar;
-    public float fillLaughSpeed;
-    [SerializeField] float startLaughPoint;
-    [SerializeField] float endLaughPoint;
-    [SerializeField] float bigPointSize;
+    public GameObject laughFill;
+    public RectTransform laughPoint;
+    public RectTransform laughBigPoint;
+
+    [HideInInspector] public float fillLaughSpeed;
+
+    public float laughPointSize;
+    public float bigPointSize;
+
+    [Header("===== Mood =====")]
+    [SerializeField] Image fillMood;
+    public float currentMood;
 
     private void Awake()
     {
@@ -37,6 +46,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SwitchState(stanbyState);
+        fillMood.fillAmount = currentMood / 100f;
     }
 
     private void Update()
@@ -55,14 +65,15 @@ public class GameManager : MonoBehaviour
         dialog.line.Clear();
 
         int isLaughtCount = UnityEngine.Random.Range(0, 10);
-        isLaugh = isLaughtCount > 5;
+        isLaugh = isLaughtCount > 3;
 
         int emojiCount = textCount / 2;
 
         if (isLaugh)
         {
-            int laughEmoji = UnityEngine.Random.Range(0, emojiCount);
-            int exceptLaughEmoji = emojiCount - laughEmoji;
+            int dif = UnityEngine.Random.Range(0, 3);
+            int laughEmoji = (emojiCount / 2) + dif;
+            int exceptLaughEmoji = (emojiCount / 2) - dif;
             int text = textCount - emojiCount;
 
             if (laughEmoji >= emojiCount / 2)
@@ -83,6 +94,8 @@ public class GameManager : MonoBehaviour
                     dialog.line.Add(textType);
 
                 }
+
+                fillLaughSpeed = laughEmoji;
             }
             else
             {
@@ -102,13 +115,16 @@ public class GameManager : MonoBehaviour
                     dialog.line.Add(textType);
 
                 }
+
+                fillLaughSpeed = exceptLaughEmoji;
+
             }
 
 
             for (int i = 0; i < text; i++)
             {
                 TextType textType = new TextType();
-                textType.text = "#@^%^@";
+                textType.text = "#";
                 textType.isEmoji = true;
                 dialog.line.Add(textType);
             }
@@ -116,8 +132,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            int laughEmoji = UnityEngine.Random.Range(0, emojiCount);
-            int exceptLaughEmoji = emojiCount - laughEmoji;
+            int dif = UnityEngine.Random.Range(0, 3);
+            int laughEmoji = (emojiCount / 2) + dif;
+            int exceptLaughEmoji = (emojiCount / 2) - dif;
             int text = textCount - emojiCount;
 
             if (laughEmoji >= emojiCount / 2)
@@ -138,6 +155,7 @@ public class GameManager : MonoBehaviour
                     dialog.line.Add(textType);
 
                 }
+                fillLaughSpeed = laughEmoji;
             }
             else
             {
@@ -157,13 +175,16 @@ public class GameManager : MonoBehaviour
                     dialog.line.Add(textType);
 
                 }
+
+                fillLaughSpeed = exceptLaughEmoji;
+
             }
 
 
             for (int i = 0; i < text; i++)
             {
                 TextType textType = new TextType();
-                textType.text = "*#&*#";
+                textType.text = "*";
                 textType.isEmoji = true;
                 dialog.line.Add(textType);
             }
@@ -185,6 +206,18 @@ public class GameManager : MonoBehaviour
             dialog.line[i] = dialog.line[index];
             dialog.line[index] = currentText;
         }
+    }
+
+    public void AddMood(float amount)
+    {
+        currentMood += amount;
+        fillMood.fillAmount = currentMood / 100f;
+    }
+
+    public void RemoveMood(float amount)
+    {
+        currentMood -= amount;
+        fillMood.fillAmount = currentMood / 100f;
     }
 
 }

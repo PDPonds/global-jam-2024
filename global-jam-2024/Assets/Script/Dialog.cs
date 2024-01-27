@@ -8,9 +8,27 @@ public class Dialog : MonoBehaviour
 {
     public TextMeshProUGUI dialogText;
     public List<TextType> line = new List<TextType>();
+
+    public float startSpeed;
+    public float speedMul;
     public float speed;
 
     int index;
+
+    private void Awake()
+    {
+        speed = startSpeed;
+    }
+
+    public void AddSpeed()
+    {
+        speed += speedMul;
+    }
+
+    public void RemoveSpeed()
+    {
+        speed -= speedMul;
+    }
 
     public void ActiveDialog()
     {
