@@ -50,14 +50,14 @@ public class PlayerMananger : MonoBehaviour
 
     IEnumerator PlayLaughSoundIE(float delay)
     {
-        SoundManager.Instance.Play(SoundManager.Instance.RandomSound(SoundManager.Instance.laughSoundList));
-
+        // SoundManager.Instance.Play(SoundManager.Instance.RandomSound(SoundManager.Instance.laughSoundList));
+        SoundManager.Instance.Play("Laugh");
         yield return new WaitForSeconds(delay);
 
         foreach (var player in allPlayerObj)
         {
-            SoundManager.Instance.Play(SoundManager.Instance.RandomSound(SoundManager.Instance.laughSoundList));
-
+            //SoundManager.Instance.Play(SoundManager.Instance.RandomSound(SoundManager.Instance.laughSoundList));
+            SoundManager.Instance.Play("Laugh");
         }
     }
 

@@ -249,7 +249,9 @@ public class SoundManager : MonoBehaviour
             return "";
         }
 
-        return audioNameList[UnityEngine.Random.Range(0, audioNameList.Length)];
+        int random = UnityEngine.Random.Range(0, audioNameList.Length);
+
+        return audioNameList[random];
     }
 
     public void FadeStop(string name)
