@@ -20,7 +20,7 @@ public class DialogState : BaseState
             GameManager.Instance.SwitchState(GameManager.Instance.laughState);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || AudioLoudnessDetection.IsMoreThanThreshold())
         {
             GameManager.Instance.RemoveMood(10f);
             GameManager.Instance.dialog.AddSpeed();

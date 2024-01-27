@@ -14,7 +14,7 @@ public class LoseState : BaseState
     {
         if (GameManager.Instance.loseUI.activeSelf)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) || AudioLoudnessDetection.IsMoreThanThreshold())
             {
                 SceneManager.LoadScene(0);
             }

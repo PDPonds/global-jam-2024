@@ -2,7 +2,7 @@ using UnityEngine;
 
 public static class AudioLoudnessDetection
 {
-    public static float Threshold = 0.3f;
+    public static float Threshold = 0.2f;
 
     private const int _sampleWindow = 64;
 
