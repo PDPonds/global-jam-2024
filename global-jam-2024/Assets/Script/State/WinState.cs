@@ -15,7 +15,7 @@ public class WinState : BaseState
     {
         if (GameManager.Instance.winUI.activeSelf)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) || AudioLoudnessDetection.IsMoreThanThreshold())
             {
                 SceneManager.LoadScene(0);
             }
