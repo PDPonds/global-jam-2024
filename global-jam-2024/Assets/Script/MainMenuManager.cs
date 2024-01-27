@@ -31,7 +31,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void GoToGameScene() 
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("TutorialScene");
     }
 
 }
