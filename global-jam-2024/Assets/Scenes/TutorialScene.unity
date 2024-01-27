@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -345,8 +345,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogText: {fileID: 228542281}
   line:
-  - text: Comrades Please be aware of what our supreme leader is saying. His speech
-      consists of 3 kinds of words
+  - text: Please be aware of what our supreme leader is saying. His speech consists
+      of 3 kinds of words
     isEmoji: 0
   startSpeed: 0.05
   speedMul: 0
@@ -372,8 +372,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Our comrades need to be aware of what our supreme leader is saying. His
-    speech consists of 3 kinds of words
+  m_text: Please be aware of what our supreme leader is saying. His speech consists
+    of 3 kinds of words
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bf8d601e80eee0b419854030213aed27, type: 2}
   m_sharedMaterial: {fileID: 3611652822560690080, guid: bf8d601e80eee0b419854030213aed27, type: 2}
@@ -2033,10 +2033,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 196887295}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4, y: 206.16}
-  m_SizeDelta: {x: 240.11, y: 39.69}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -4, y: -17.839996}
+  m_SizeDelta: {x: 240.11, y: 39.690002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1441238681
 MonoBehaviour:

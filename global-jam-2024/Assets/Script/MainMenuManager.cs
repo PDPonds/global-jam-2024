@@ -12,14 +12,32 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField]
     private Button _exitButton;
 
+    private bool hasStart;
+
     void Start()
     {
+        AudioLoudnessDetection.InstantiateMicrophoneToAudioClip();
         _playButton.onClick.AddListener(Play);
         _exitButton.onClick.AddListener(Exit);
     }
 
+    private void Update()
+    {
+        if (hasStart) 
+        {
+            return;
+        }
+
+
+        if (AudioLoudnessDetection.IsMoreThanThreshold() || Input.GetKeyDown("space")) 
+        {
+            Play();
+        }
+    }
+
     private void Play()
     {
+        hasStart = true;
         FadingUI.Instance.OnStopFading.AddListener(GoToGameScene);
         FadingUI.Instance.StartFadeIn();
     }
