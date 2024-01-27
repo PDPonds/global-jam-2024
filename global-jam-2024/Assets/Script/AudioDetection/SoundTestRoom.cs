@@ -36,11 +36,11 @@ public class SoundTestRoom : MonoBehaviour
         _laughThreshold.text = AudioLoudnessDetection.Threshold.ToString();
 
         _micMode.text = AudioLoudnessDetection.micMode.ToString();
+    }
 
-        if (Input.GetKeyDown("space"))
-        {
-            SceneManager.LoadScene("TutorialScene");
-        }
+    public void GoToTutorialScene() 
+    {
+        SceneManager.LoadScene("TutorialScene");
     }
 
     public void ResetSoundPower() 
@@ -69,13 +69,13 @@ public class SoundTestRoom : MonoBehaviour
 
     public void ChangeToggleMode() 
     {
-        if (AudioLoudnessDetection.micMode == MicMode.AlwaysTurnOn)
+        if (AudioLoudnessDetection.micMode == MicMode.Always)
         {
             AudioLoudnessDetection.micMode = MicMode.Toggle;
         }
         else 
         {
-            AudioLoudnessDetection.micMode = MicMode.AlwaysTurnOn;
+            AudioLoudnessDetection.micMode = MicMode.Always;
         }
     }
 }

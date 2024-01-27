@@ -4,7 +4,7 @@ using UnityEngine;
 public enum MicMode
 {
     Toggle,
-    AlwaysTurnOn
+    Always
 }
 
 public static class AudioLoudnessDetection
