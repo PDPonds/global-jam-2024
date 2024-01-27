@@ -10,6 +10,11 @@ public class StanbyState : BaseState
         currentTime = 3f;
         GameManager.Instance.dialogObj.SetActive(false);
         GameManager.Instance.laughtBar.SetActive(false);
+        GameManager.Instance.loseUI.SetActive(false);
+        GameManager.Instance.winUI.SetActive(false);
+
+        SupremeManager.instance.SetBoolAnim("isTalk", false);
+
     }
 
     public override void UpdateState(GameObject go)
