@@ -15,6 +15,7 @@ public class PlayerMananger : MonoBehaviour
     public GameObject playerObj;
     public GameObject[] allPlayerObj;
     public GameObject playerlight;
+    public GameObject silentlight;
     public GameObject winningLight;
     public GameObject []secretBGs;
     public GameObject laughFeedback;
@@ -76,7 +77,7 @@ public class PlayerMananger : MonoBehaviour
     {
         Instantiate(silentFeedback.gameObject, transform.position, transform.rotation, spawnPoint.transform);
         SoundManager.Instance.PlayOneShot("Shh");
-        playerlight.SetActive(true);
+        silentlight.SetActive(true);
         GameManager.Instance.AddMood(20f);
         GameManager.Instance.dialog.RemoveSpeed();
         PlayAnimation("Laugh", 0.5f);
