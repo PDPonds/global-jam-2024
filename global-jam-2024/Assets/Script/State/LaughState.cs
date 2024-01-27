@@ -27,7 +27,7 @@ public class LaughState : BaseState
         float startLaughPoint = midTargetPoint - (GameManager.Instance.laughPointSize / 2f);
         float endLaughPoint = midTargetPoint + (GameManager.Instance.laughPointSize / 2f);
         
-        if (Input.GetKeyDown(KeyCode.Space) )
+        if (Input.GetKeyDown(KeyCode.Space) || AudioLoudnessDetection.IsMoreThanThreshold())
         {
             if (currentPoint >= startLaughPoint && currentPoint <= endLaughPoint)
             {
