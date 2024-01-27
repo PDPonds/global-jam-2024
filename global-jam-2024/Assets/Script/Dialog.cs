@@ -10,6 +10,9 @@ public class Dialog : MonoBehaviour
     public TextMeshProUGUI dialogText;
     public List<TextType> line = new List<TextType>();
 
+    [HideInInspector] public int duckCount;
+    [HideInInspector] public int tankCount;
+
     public float startSpeed;
     public float speedMul;
     public float speed;

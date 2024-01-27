@@ -14,6 +14,7 @@ public class LaughState : BaseState
         SupremeManager.instance.SetBoolAnim("isTalk", false);
         GameManager.Instance.laughtBar.SetActive(true);
         currentPoint = 0;
+        GameManager.Instance.debugText.gameObject.SetActive(false);
     }
 
     public override void UpdateState(GameObject go)
@@ -26,48 +27,32 @@ public class LaughState : BaseState
         float startLaughPoint = midTargetPoint - (GameManager.Instance.laughPointSize / 2f);
         float endLaughPoint = midTargetPoint + (GameManager.Instance.laughPointSize / 2f);
         
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) )
         {
             if (currentPoint >= startLaughPoint && currentPoint <= endLaughPoint)
             {
                 if(GameManager.Instance.isLaugh)
                 {
-                    GameManager.Instance.AddMood(15f);
-                    GameManager.Instance.dialog.RemoveSpeed();
-                    PlayerMananger.instance.PlayAnimation("Laugh", 0.5f);
-                    
+                    PlayerMananger.instance.HitButton();
                 }
                 else
                 {
-                    GameManager.Instance.RemoveMood(10f);
-                    GameManager.Instance.dialog.AddSpeed();
-                    PlayerMananger.instance.PlayAnimation("Wrong", 0.5f);
-                    SupremeManager.instance.PlayAnimation("Piss");
+                    PlayerMananger.instance.NoHitButton();
                 }
             }
             else
             {
-                GameManager.Instance.RemoveMood(10f);
-                GameManager.Instance.dialog.AddSpeed();
-                PlayerMananger.instance.PlayAnimation("Wrong", 0.5f);
-                SupremeManager.instance.PlayAnimation("Piss");
-
+                PlayerMananger.instance.NoHitButton();
             }
 
             GameManager.Instance.SwitchState(GameManager.Instance.resultState);
-
         }
         
         if(GameManager.Instance.isLaugh)
         {
             if (currentPoint >= 100f)
             {
-                GameManager.Instance.RemoveMood(10f);
-                GameManager.Instance.dialog.AddSpeed();
-                PlayerMananger.instance.PlayAnimation("Wrong", 0.5f);
-                SupremeManager.instance.PlayAnimation("Piss");
-
-                GameManager.Instance.SwitchState(GameManager.Instance.resultState);
+                PlayerMananger.instance.NoHitButton();
             }
 
         }
@@ -75,7 +60,7 @@ public class LaughState : BaseState
         {
             if (currentPoint >= 100f)
             {
-                GameManager.Instance.SwitchState(GameManager.Instance.resultState);
+                PlayerMananger.instance.HitButton();
             }
         }
 

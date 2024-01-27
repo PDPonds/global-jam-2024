@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -50,21 +51,28 @@ public class GameManager : MonoBehaviour
 
     [Header("===== Game ======")]
     public CameraShake camShake;
+    public TextMeshProUGUI debugText;
 
     private void Awake()
     {
         Instance = this;
+        fillMood.fillAmount = 0;
     }
 
     private void Start()
     {
         SwitchState(stanbyState);
-        fillMood.fillAmount = currentMood / 100f;
+        
     }
 
     private void Update()
     {
         currentState.UpdateState(transform.gameObject);
+
+        if(fillMood.fillAmount != currentMood / 100f)
+        {
+            fillMood.fillAmount = Mathf.Lerp(fillMood.fillAmount, currentMood / 100f, Time.deltaTime);
+        }
     }
 
     public void SwitchState(BaseState state)
@@ -81,6 +89,8 @@ public class GameManager : MonoBehaviour
     public void GenerateDialog()
     {
         dialog.line.Clear();
+        dialog.duckCount = 0;
+        dialog.tankCount = 0;
 
         int isLaughtCount = UnityEngine.Random.Range(0, 10);
         isLaugh = isLaughtCount > 3;
@@ -90,8 +100,8 @@ public class GameManager : MonoBehaviour
         if (isLaugh)
         {
             int dif = UnityEngine.Random.Range(5, 10);
-            int laughEmoji = (emojiCount / 2) + dif;
-            int exceptLaughEmoji = (emojiCount / 2) - dif;
+            int laughEmoji = (emojiCount / 2) + (dif/2);
+            int exceptLaughEmoji = (emojiCount / 2) - (dif/2);
             int text = textCount - emojiCount;
 
             if (laughEmoji >= emojiCount / 2)
@@ -102,6 +112,7 @@ public class GameManager : MonoBehaviour
                     textType.text = "<sprite=1>";
                     textType.isEmoji = true;
                     dialog.line.Add(textType);
+                    dialog.duckCount++;
                 }
 
                 for (int i = 0; i < exceptLaughEmoji; i++)
@@ -110,6 +121,7 @@ public class GameManager : MonoBehaviour
                     textType.text = "<sprite=0>";
                     textType.isEmoji = true;
                     dialog.line.Add(textType);
+                    dialog.tankCount++;
 
                 }
 
@@ -123,6 +135,7 @@ public class GameManager : MonoBehaviour
                     textType.text = "<sprite=0>";
                     textType.isEmoji = true;
                     dialog.line.Add(textType);
+                    dialog.tankCount++;
                 }
 
                 for (int i = 0; i < exceptLaughEmoji; i++)
@@ -131,6 +144,7 @@ public class GameManager : MonoBehaviour
                     textType.text = "<sprite=1>";
                     textType.isEmoji = true;
                     dialog.line.Add(textType);
+                    dialog.duckCount++;
 
                 }
 
@@ -151,8 +165,8 @@ public class GameManager : MonoBehaviour
         else
         {
             int dif = UnityEngine.Random.Range(5, 10);
-            int laughEmoji = (emojiCount / 2) + dif;
-            int exceptLaughEmoji = (emojiCount / 2) - dif;
+            int laughEmoji = (emojiCount / 2) + (dif/2);
+            int exceptLaughEmoji = (emojiCount / 2) - (dif/2);
             int text = textCount - emojiCount;
 
             if (laughEmoji >= emojiCount / 2)
@@ -163,6 +177,7 @@ public class GameManager : MonoBehaviour
                     textType.text = "<sprite=0>";
                     textType.isEmoji = true;
                     dialog.line.Add(textType);
+                    dialog.tankCount++;
                 }
 
                 for (int i = 0; i < exceptLaughEmoji; i++)
@@ -171,7 +186,7 @@ public class GameManager : MonoBehaviour
                     textType.text = "<sprite=1>";
                     textType.isEmoji = true;
                     dialog.line.Add(textType);
-
+                    dialog.duckCount++;
                 }
                 fillLaughSpeed = laughEmoji;
             }
@@ -183,6 +198,7 @@ public class GameManager : MonoBehaviour
                     textType.text = "<sprite=1>";
                     textType.isEmoji = true;
                     dialog.line.Add(textType);
+                    dialog.duckCount++;
                 }
 
                 for (int i = 0; i < exceptLaughEmoji; i++)
@@ -191,7 +207,7 @@ public class GameManager : MonoBehaviour
                     textType.text = "<sprite=0>";
                     textType.isEmoji = true;
                     dialog.line.Add(textType);
-
+                    dialog.tankCount++;
                 }
 
                 fillLaughSpeed = exceptLaughEmoji;
@@ -229,13 +245,13 @@ public class GameManager : MonoBehaviour
     public void AddMood(float amount)
     {
         currentMood += amount;
-        fillMood.fillAmount = currentMood / 100f;
+        
     }
 
     public void RemoveMood(float amount)
     {
         currentMood -= amount;
-        fillMood.fillAmount = currentMood / 100f;
+        
     }
 
     IEnumerator lose()
@@ -243,7 +259,7 @@ public class GameManager : MonoBehaviour
         SupremeManager.instance.PlayAnimation("Slam");
         yield return new WaitForSeconds(.3f);
         StartCoroutine(camShake.Shake(0.2f, .1f));
-        
+
         Animator cageAnim = cageObj.GetComponent<Animator>();
         cageAnim.Play("Drop");
 

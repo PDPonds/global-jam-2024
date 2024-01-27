@@ -9,6 +9,7 @@ public class DialogState : BaseState
         GameManager.Instance.dialogObj.SetActive(true);
         GameManager.Instance.GenerateDialog();
         SupremeManager.instance.SetBoolAnim("isTalk", true);
+        GameManager.Instance.debugText.gameObject.SetActive(false);
 
     }
 

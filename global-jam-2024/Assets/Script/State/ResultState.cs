@@ -11,6 +11,10 @@ public class ResultState : BaseState
         GameManager.Instance.laughtBar.SetActive(false);
         SupremeManager.instance.SetBoolAnim("isTalk", false);
 
+        GameManager.Instance.debugText.gameObject.SetActive(true);
+        GameManager.Instance.debugText.text = $"<sprite=1> : {GameManager.Instance.dialog.duckCount} " +
+            $"<sprite=0> : {GameManager.Instance.dialog.tankCount}";
+
         currentTime = 3;
 
         if (GameManager.Instance.currentMood < 0)

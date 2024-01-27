@@ -12,6 +12,7 @@ public class StanbyState : BaseState
         GameManager.Instance.laughtBar.SetActive(false);
         GameManager.Instance.loseUI.SetActive(false);
         GameManager.Instance.winUI.SetActive(false);
+        GameManager.Instance.debugText.gameObject.SetActive(false);
 
         SupremeManager.instance.SetBoolAnim("isTalk", false);
 
