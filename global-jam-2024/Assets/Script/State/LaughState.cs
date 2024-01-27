@@ -44,7 +44,7 @@ public class LaughState : BaseState
             {
                 PlayerMananger.instance.NoHitButton();
             }
-
+            
             GameManager.Instance.SwitchState(GameManager.Instance.resultState);
         }
         
@@ -61,6 +61,7 @@ public class LaughState : BaseState
             if (currentPoint >= 100f)
             {
                 PlayerMananger.instance.HitButton();
+
             }
         }
 

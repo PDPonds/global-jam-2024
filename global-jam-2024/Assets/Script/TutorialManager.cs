@@ -62,6 +62,7 @@ public class TutorialManager : MonoBehaviour
         {
             _tutorialList[currentIndex].SetActive(true);
         }
+        SoundManager.Instance.PlayOneShot("Click");
 
     }
 

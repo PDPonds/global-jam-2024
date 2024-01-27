@@ -19,6 +19,7 @@ public class MainMenuManager : MonoBehaviour
         AudioLoudnessDetection.InstantiateMicrophoneToAudioClip();
         _exitButton.onClick.AddListener(Exit);
         _soundTestButton.onClick.AddListener(GoToSoundTest);
+        SoundManager.Instance.Play("BGM");
     }
 
     private void Update()
@@ -38,18 +39,23 @@ public class MainMenuManager : MonoBehaviour
     private void Play()
     {
         hasStart = true;
+        SoundManager.Instance.PlayOneShot("Click");
         FadingUI.Instance.OnStopFading.AddListener(GoToGameScene);
         FadingUI.Instance.StartFadeIn();
+
     }
 
     private void Exit()
     {
+        SoundManager.Instance.PlayOneShot("Click");
         FadingUI.Instance.OnStopFading.AddListener(Application.Quit);
         FadingUI.Instance.StartFadeIn();
+
     }
 
     private void GoToSoundTest() 
     {
+        SoundManager.Instance.PlayOneShot("Click");
         FadingUI.Instance.OnStopFading.AddListener(LoadSoundTest);
         FadingUI.Instance.StartFadeIn();
     }
