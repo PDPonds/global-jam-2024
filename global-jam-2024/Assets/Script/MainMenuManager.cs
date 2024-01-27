@@ -7,9 +7,6 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField]
-    private Button _playButton;
-
-    [SerializeField]
     private Button _exitButton;
 
     private bool hasStart;
@@ -17,7 +14,6 @@ public class MainMenuManager : MonoBehaviour
     void Start()
     {
         AudioLoudnessDetection.InstantiateMicrophoneToAudioClip();
-        _playButton.onClick.AddListener(Play);
         _exitButton.onClick.AddListener(Exit);
     }
 

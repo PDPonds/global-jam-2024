@@ -2,6 +2,7 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -17,6 +18,20 @@ public class TutorialManager : MonoBehaviour
         {
             _button.onClick.AddListener(Next);
         }
+    }
+
+    private void Update()
+    {
+        if (AudioLoudnessDetection.IsMoreThanThreshold() || Input.GetKeyDown("space"))
+        {
+            StartCoroutine(DelayNext());
+        }
+    }
+
+    IEnumerator DelayNext() 
+    {
+        yield return new WaitForSeconds(1.0f);
+        Next();
     }
 
     public void Next() 
