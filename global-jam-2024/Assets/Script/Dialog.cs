@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Dialog : MonoBehaviour
 {
@@ -15,9 +16,28 @@ public class Dialog : MonoBehaviour
 
     int index;
 
+    [Header("===== Size Controller =====")]
+    public LayoutElement layout;
+    public int characterLimit;
+    public RectTransform fornt;
+    public RectTransform back;
+
+
     private void Awake()
     {
         speed = startSpeed;
+    }
+
+    private void Update()
+    {
+        int charCount = dialogText.text.Length;
+        layout.enabled = charCount > characterLimit;
+
+        float scaleY = transform.GetComponent<RectTransform>().sizeDelta.y;
+        fornt.sizeDelta = new Vector2(fornt.sizeDelta.x, scaleY);
+        back.sizeDelta = new Vector2(fornt.sizeDelta.x, scaleY);
+
+
     }
 
     public void AddSpeed()

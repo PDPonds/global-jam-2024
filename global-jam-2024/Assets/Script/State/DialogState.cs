@@ -24,7 +24,7 @@ public class DialogState : BaseState
         {
             GameManager.Instance.RemoveMood(10f);
             GameManager.Instance.dialog.AddSpeed();
-            PlayerMananger.instance.PlayAnimation("PlayerWrong", 0.5f);
+            PlayerMananger.instance.PlayAnimation("Wrong", 0.5f);
             SupremeManager.instance.PlayAnimation("Piss");
 
             GameManager.Instance.SwitchState(GameManager.Instance.resultState);
