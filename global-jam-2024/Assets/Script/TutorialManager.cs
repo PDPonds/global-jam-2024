@@ -11,7 +11,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField]
     List<Button> _nextButtonList = new List<Button>();
     private int currentIndex = 0;
-    private float muteCooldonw = 3.0f;
+    private float muteCooldonw = 1.0f;
 
     private void Start()
     {
