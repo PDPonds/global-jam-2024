@@ -33,7 +33,7 @@ public class SoundTestRoom : MonoBehaviour
             _soundPower.text = _maximumSoundPower.ToString();
         }
 
-        _laughThreshold.text = AudioLoudnessDetection.Threshold.ToString();
+        _laughThreshold.text = AudioLoudnessDetection.Threshold.ToString("F2");
 
         _micMode.text = AudioLoudnessDetection.micMode.ToString();
     }
