@@ -7,19 +7,33 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField]
-    private Button _playButton;
-
-    [SerializeField]
     private Button _exitButton;
+
+    private bool hasStart;
 
     void Start()
     {
-        _playButton.onClick.AddListener(Play);
+        AudioLoudnessDetection.InstantiateMicrophoneToAudioClip();
         _exitButton.onClick.AddListener(Exit);
+    }
+
+    private void Update()
+    {
+        if (hasStart) 
+        {
+            return;
+        }
+
+
+        if (AudioLoudnessDetection.IsMoreThanThreshold() || Input.GetKeyDown("space")) 
+        {
+            Play();
+        }
     }
 
     private void Play()
     {
+        hasStart = true;
         FadingUI.Instance.OnStopFading.AddListener(GoToGameScene);
         FadingUI.Instance.StartFadeIn();
     }
@@ -31,7 +45,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void GoToGameScene() 
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("TutorialScene");
     }
 
 }
