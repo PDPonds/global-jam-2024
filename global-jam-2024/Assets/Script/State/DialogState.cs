@@ -28,6 +28,7 @@ public class DialogState : BaseState
             GameManager.Instance.dialog.AddSpeed();
             PlayerMananger.instance.PlayAnimation("Wrong", 0.5f);
             SupremeManager.instance.PlayAnimation("Piss");
+            SupremeManager.instance.PlayRedLight();
             SoundManager.Instance.PlayOneShot("Swallow");
             SoundManager.Instance.PlayOneShot("Miss");
 

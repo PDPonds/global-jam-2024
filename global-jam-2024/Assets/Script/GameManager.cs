@@ -262,6 +262,7 @@ public class GameManager : MonoBehaviour
     IEnumerator lose()
     {
         SupremeManager.instance.PlayAnimation("Slam");
+        SupremeManager.instance.PlayRedLight();
         yield return new WaitForSeconds(.3f);
         StartCoroutine(camShake.Shake(0.2f, .1f));
 

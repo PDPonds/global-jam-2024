@@ -8,6 +8,7 @@ public class SupremeManager : MonoBehaviour
 
     public Transform mesh;
     public Animator anim;
+    public GameObject redLight;
 
     private void Awake()
     {
@@ -24,4 +25,8 @@ public class SupremeManager : MonoBehaviour
         anim.SetBool(name, value);
     }
 
+    public void PlayRedLight() 
+    {
+        redLight.SetActive(true);
+    }
 }

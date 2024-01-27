@@ -14,7 +14,7 @@ public class PlayerMananger : MonoBehaviour
 
     public GameObject playerObj;
     public GameObject[] allPlayerObj;
-
+    public GameObject playerlight;
     public void PlayAnimation(string name, float delay)
     {
         StartCoroutine(PlayAnimationIE(name, delay));
@@ -58,6 +58,7 @@ public class PlayerMananger : MonoBehaviour
     public void HitButton()
     {
         SoundManager.Instance.PlayOneShot("TapSuccess");
+        playerlight.SetActive(true);
         GameManager.Instance.AddMood(20f);
         GameManager.Instance.dialog.RemoveSpeed();
         PlayAnimation("Laugh", 0.5f);
@@ -72,6 +73,7 @@ public class PlayerMananger : MonoBehaviour
         GameManager.Instance.dialog.AddSpeed();
         PlayAnimation("Wrong", 0.5f);
         SupremeManager.instance.PlayAnimation("Piss");
+        SupremeManager.instance.PlayRedLight();
         StartCoroutine(GameManager.Instance.camShake.Shake(0.2f, .1f));
         GameManager.Instance.SwitchState(GameManager.Instance.resultState);
         
