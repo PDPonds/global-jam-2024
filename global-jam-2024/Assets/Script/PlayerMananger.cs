@@ -39,6 +39,8 @@ public class PlayerMananger : MonoBehaviour
         GameManager.Instance.dialog.RemoveSpeed();
         PlayAnimation("Laugh", 0.5f);
         GameManager.Instance.SwitchState(GameManager.Instance.resultState);
+        SoundManager.Instance.PlayOneShot("TapSuccess");
+
     }
 
     public void NoHitButton()
@@ -49,6 +51,7 @@ public class PlayerMananger : MonoBehaviour
         SupremeManager.instance.PlayAnimation("Piss");
         StartCoroutine(GameManager.Instance.camShake.Shake(0.2f, .1f));
         GameManager.Instance.SwitchState(GameManager.Instance.resultState);
+        SoundManager.Instance.PlayOneShot("Miss");
     }
 
 }

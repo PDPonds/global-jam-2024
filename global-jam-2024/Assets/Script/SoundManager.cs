@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using UnityEngine.Audio;
+using System.Collections;
 
 public class SoundManager : MonoBehaviour
 {
@@ -247,6 +248,26 @@ public class SoundManager : MonoBehaviour
         }
 
         return audioNameList[UnityEngine.Random.Range(0, audioNameList.Length)];
+    }
+
+    public void FadeStop(string name)
+    {
+        SoundClass s = Array.Find(Sounds, Sound => Sound.Name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found...");
+            return;
+        }
+        StartCoroutine(dropVolume(s.Source));
+    }
+
+    IEnumerator dropVolume(AudioSource source)
+    {
+        while (source.volume > 0)
+        {
+            source.volume -= Time.deltaTime;
+            yield return null;
+        }
     }
 
 }

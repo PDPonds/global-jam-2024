@@ -1333,6 +1333,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4536055001560317674, guid: 215cdb61085ce054aa57ce46f6f814eb, type: 3}
+      propertyPath: Sounds.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4536055001560317674, guid: 215cdb61085ce054aa57ce46f6f814eb, type: 3}
+      propertyPath: Sounds.Array.data[6].Vol
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4536055001560317674, guid: 215cdb61085ce054aa57ce46f6f814eb, type: 3}
+      propertyPath: Sounds.Array.data[6].Name
+      value: BGM
+      objectReference: {fileID: 0}
+    - target: {fileID: 4536055001560317674, guid: 215cdb61085ce054aa57ce46f6f814eb, type: 3}
+      propertyPath: Sounds.Array.data[6].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d5a0cc8dfecbe1f46b429f90ab0d8817, type: 3}
+    - target: {fileID: 4536055001560317674, guid: 215cdb61085ce054aa57ce46f6f814eb, type: 3}
+      propertyPath: Sounds.Array.data[6].Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4536055001560317674, guid: 215cdb61085ce054aa57ce46f6f814eb, type: 3}
+      propertyPath: Sounds.Array.data[6].IsLoop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4536055001560317674, guid: 215cdb61085ce054aa57ce46f6f814eb, type: 3}
+      propertyPath: Sounds.Array.data[6].IsPlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
