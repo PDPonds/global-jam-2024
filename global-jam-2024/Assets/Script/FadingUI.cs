@@ -37,6 +37,10 @@ public class FadingUI : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _currentSoundThreshold;
 
+
+    [SerializeField]
+    private Image micImage;
+
     public UnityEvent OnStopFading;
     private bool fading;
     private FadingPhase currentFadingPhase;
@@ -79,6 +83,12 @@ public class FadingUI : MonoBehaviour
                     StopFading();
                 }
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.T)) 
+        {
+            AudioLoudnessDetection.SetMute();
+            micImage.gameObject.SetActive(!AudioLoudnessDetection.isMute);
         }
 
         _currentSoundValue.text = AudioLoudnessDetection.GetLoudnessFromMicrophone().ToString();

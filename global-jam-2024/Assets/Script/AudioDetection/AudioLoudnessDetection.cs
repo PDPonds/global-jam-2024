@@ -8,7 +8,14 @@ public static class AudioLoudnessDetection
 
     private static AudioClip _microphoneClip;
 
+    public static bool isDisable;
+
     public static bool isMute;
+
+    public static void SetMute() 
+    {
+        isMute = !isMute;
+    }
 
     public static void InstantiateMicrophoneToAudioClip() 
     {
@@ -18,6 +25,11 @@ public static class AudioLoudnessDetection
 
     public static float GetLoudnessFromMicrophone() 
     {
+        if (isMute) 
+        {
+            return 0;
+        }
+
         if (_microphoneClip == null) 
         {
             InstantiateMicrophoneToAudioClip();
@@ -53,8 +65,8 @@ public static class AudioLoudnessDetection
         return (GetLoudnessFromMicrophone() >= Threshold);
     }
 
-    public static void SetMute(bool mute) 
+    public static void SetMute(bool disable) 
     {
-        isMute = mute;
+        isDisable = disable;
     }
 }

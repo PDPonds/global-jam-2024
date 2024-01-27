@@ -25,7 +25,7 @@ public class TutorialManager : MonoBehaviour
     {
 
 
-        if (AudioLoudnessDetection.isMute)
+        if (AudioLoudnessDetection.isDisable)
         {
             muteCooldonw -= Time.deltaTime;
             if (muteCooldonw <= 0)
