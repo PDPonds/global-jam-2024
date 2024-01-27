@@ -47,6 +47,8 @@ public class SoundManager : MonoBehaviour
                 s.Source.spatialBlend = s.SpatialBlend;
             }
         }
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     #endregion

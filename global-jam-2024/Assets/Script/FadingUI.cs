@@ -41,6 +41,7 @@ public class FadingUI : MonoBehaviour
     private bool fading;
     private FadingPhase currentFadingPhase;
 
+    [SerializeField] private float fadingSpeed;
 
 
     private void Awake()
@@ -62,7 +63,7 @@ public class FadingUI : MonoBehaviour
         {
             if (currentFadingPhase == FadingPhase.FadeIn)
             {
-                fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, fadeImage.color.a + Time.deltaTime);
+                fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, fadeImage.color.a + Time.deltaTime * fadingSpeed);
                 
                 if (fadeImage.color.a >= 1) 
                 {
@@ -71,7 +72,7 @@ public class FadingUI : MonoBehaviour
             }
             else
             {
-                fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, fadeImage.color.a - Time.deltaTime);
+                fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, fadeImage.color.a - Time.deltaTime * fadingSpeed);
 
                 if (fadeImage.color.a <= 0)
                 {
@@ -95,7 +96,7 @@ public class FadingUI : MonoBehaviour
     {
         fadeImage.gameObject.SetActive(true);
         fading = true;
-        currentFadingPhase = FadingPhase.FadeIn;
+        currentFadingPhase = FadingPhase.FadeOut;
     }
 
     private void StopFading() 

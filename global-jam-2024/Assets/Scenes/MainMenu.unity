@@ -912,7 +912,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -116.73, y: -33}
+  m_AnchoredPosition: {x: -116.72998, y: -33}
   m_SizeDelta: {x: 245.69, y: 57.69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1240051785
@@ -1346,6 +1346,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 481590072271567319, guid: c4c1da7a728b95542b7f7d0c9f974e8e, type: 3}
+      propertyPath: fadingSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3682133859165844863, guid: c4c1da7a728b95542b7f7d0c9f974e8e, type: 3}
       propertyPath: m_Name
       value: FadingCanvas

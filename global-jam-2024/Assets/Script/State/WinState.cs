@@ -7,7 +7,6 @@ public class WinState : BaseState
 {
     public override void EnterState(GameObject go)
     {
-        GameManager.Instance.winUI.SetActive(true);
 
     }
 
