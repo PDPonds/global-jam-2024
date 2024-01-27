@@ -67,7 +67,7 @@ public class LaughState : BaseState
         {
             if (currentPoint >= 100f)
             {
-                PlayerMananger.instance.HitButton();
+                PlayerMananger.instance.BeSilent();
 
             }
         }

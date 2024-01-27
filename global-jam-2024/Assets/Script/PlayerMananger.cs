@@ -72,6 +72,18 @@ public class PlayerMananger : MonoBehaviour
 
     }
 
+    public void BeSilent()
+    {
+        Instantiate(silentFeedback.gameObject, transform.position, transform.rotation, spawnPoint.transform);
+        SoundManager.Instance.PlayOneShot("Shh");
+        playerlight.SetActive(true);
+        GameManager.Instance.AddMood(20f);
+        GameManager.Instance.dialog.RemoveSpeed();
+        PlayAnimation("Laugh", 0.5f);
+        GameManager.Instance.SwitchState(GameManager.Instance.resultState);
+
+    }
+
     public void NoHitButton()
     {
         SoundManager.Instance.PlayOneShot("Miss");
