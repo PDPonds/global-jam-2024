@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     public DialogState dialogState = new DialogState();
     public LaughState laughState = new LaughState();
     public ResultState resultState = new ResultState();
+    public LoseState loseState = new LoseState();
+    public WinState winState = new WinState();
     #endregion
 
     [Header("===== Dialog =====")]
@@ -38,6 +41,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] Image fillMood;
     public float currentMood;
 
+    [Header("===== Lose =====")]
+    public GameObject loseUI;
+
+    [Header("===== Win =====")]
+    public GameObject winUI;
+
+    [Header("===== Game ======")]
+    public CameraShake camShake;
+
     private void Awake()
     {
         Instance = this;
@@ -58,6 +70,11 @@ public class GameManager : MonoBehaviour
     {
         currentState = state;
         currentState.EnterState(transform.gameObject);
+
+        if (currentState == loseState)
+        {
+            StartCoroutine(lose());
+        }
     }
 
     public void GenerateDialog()
@@ -218,6 +235,15 @@ public class GameManager : MonoBehaviour
     {
         currentMood -= amount;
         fillMood.fillAmount = currentMood / 100f;
+    }
+
+    IEnumerator lose()
+    {
+        SupremeManager.instance.PlayAnimation("Slam");
+        yield return new WaitForSeconds(.3f);
+        StartCoroutine(camShake.Shake(0.2f, .1f));
+        yield return new WaitForSeconds(1f);
+        loseUI.SetActive(true);
     }
 
 }

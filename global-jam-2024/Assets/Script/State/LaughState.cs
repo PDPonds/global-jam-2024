@@ -11,6 +11,7 @@ public class LaughState : BaseState
 
     public override void EnterState(GameObject go)
     {
+        SupremeManager.instance.SetBoolAnim("isTalk", false);
         GameManager.Instance.laughtBar.SetActive(true);
         currentPoint = 0;
     }
@@ -33,18 +34,24 @@ public class LaughState : BaseState
                 {
                     GameManager.Instance.AddMood(15f);
                     GameManager.Instance.dialog.RemoveSpeed();
+                    PlayerMananger.instance.PlayAnimation("PlayerLaugh", 0.5f);
                     
                 }
                 else
                 {
                     GameManager.Instance.RemoveMood(10f);
                     GameManager.Instance.dialog.AddSpeed();
+                    PlayerMananger.instance.PlayAnimation("PlayerWrong", 0.5f);
+                    SupremeManager.instance.PlayAnimation("Piss");
                 }
             }
             else
             {
                 GameManager.Instance.RemoveMood(10f);
                 GameManager.Instance.dialog.AddSpeed();
+                PlayerMananger.instance.PlayAnimation("PlayerWrong", 0.5f);
+                SupremeManager.instance.PlayAnimation("Piss");
+
             }
 
             GameManager.Instance.SwitchState(GameManager.Instance.resultState);
@@ -57,6 +64,9 @@ public class LaughState : BaseState
             {
                 GameManager.Instance.RemoveMood(10f);
                 GameManager.Instance.dialog.AddSpeed();
+                PlayerMananger.instance.PlayAnimation("PlayerWrong", 0.5f);
+                SupremeManager.instance.PlayAnimation("Piss");
+
                 GameManager.Instance.SwitchState(GameManager.Instance.resultState);
             }
 
