@@ -198,6 +198,14 @@ MonoBehaviour:
     Pitch: 1
     SpatialBlend: 0
     Source: {fileID: 0}
+  - Name: SecretBGM
+    clip: {fileID: 8300000, guid: a86421efa1e2509429d73a14f72cc4a3, type: 3}
+    IsPlayOnAwake: 0
+    IsLoop: 0
+    Vol: 0.5
+    Pitch: 1
+    SpatialBlend: 0
+    Source: {fileID: 0}
   laughSoundList:
   - Laugh01
   - Laugh02

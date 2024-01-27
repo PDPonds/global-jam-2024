@@ -68,6 +68,6 @@ public class TutorialManager : MonoBehaviour
     {
         SoundManager.Instance.Stop("BGM");
         SoundManager.Instance.Play("BGM2");
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("GameScene");
     }
 }

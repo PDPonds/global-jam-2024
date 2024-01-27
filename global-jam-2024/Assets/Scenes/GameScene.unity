@@ -791,6 +791,7 @@ MonoBehaviour:
   loseUI: {fileID: 1684439775}
   cageObj: {fileID: 1387770711}
   winUI: {fileID: 109693535}
+  secretWinUI: {fileID: 5396260774626090203}
   camHolder: {fileID: 1315594217}
   camShake: {fileID: 519420033}
   debugText: {fileID: 2002222851}
@@ -1546,7 +1547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8866680154485942466, guid: 454d9716f4cf5364fad193390d7cebc3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 284.38
       objectReference: {fileID: 0}
     - target: {fileID: 8866680154485942466, guid: 454d9716f4cf5364fad193390d7cebc3, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1573,6 +1574,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 454d9716f4cf5364fad193390d7cebc3, type: 3}
+--- !u!1 &5396260774626090203 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7085605148830007528, guid: 454d9716f4cf5364fad193390d7cebc3, type: 3}
+  m_PrefabInstance: {fileID: 5396260774626090202}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6769861418414748103
 PrefabInstance:
   m_ObjectHideFlags: 0

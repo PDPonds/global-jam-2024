@@ -15,6 +15,11 @@ public class PlayerMananger : MonoBehaviour
     public GameObject playerObj;
     public GameObject[] allPlayerObj;
     public GameObject playerlight;
+    public GameObject winningLight;
+    public GameObject []secretBGs;
+    public GameObject laughFeedback;
+    public GameObject silentFeedback;
+    public GameObject spawnPoint;
     public void PlayAnimation(string name, float delay)
     {
         StartCoroutine(PlayAnimationIE(name, delay));
@@ -57,6 +62,7 @@ public class PlayerMananger : MonoBehaviour
 
     public void HitButton()
     {
+        Instantiate(laughFeedback.gameObject, transform.position, transform.rotation, spawnPoint.transform);
         SoundManager.Instance.PlayOneShot("TapSuccess");
         playerlight.SetActive(true);
         GameManager.Instance.AddMood(20f);
@@ -77,6 +83,19 @@ public class PlayerMananger : MonoBehaviour
         StartCoroutine(GameManager.Instance.camShake.Shake(0.2f, .1f));
         GameManager.Instance.SwitchState(GameManager.Instance.resultState);
         
+    }
+
+    public void PlayWinningLight() 
+    {
+        winningLight.SetActive(true);
+    }
+
+    public void OpenAllSecretBGs() 
+    {
+        foreach (GameObject bg in secretBGs) 
+        {
+            bg.SetActive(true);
+        }
     }
 
 }

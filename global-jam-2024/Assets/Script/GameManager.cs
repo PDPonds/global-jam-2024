@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     [Header("===== Win =====")]
     public GameObject winUI;
+    public GameObject secretWinUI;
 
     [Header("===== Game ======")]
     public Transform camHolder;
@@ -287,7 +288,16 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         FadingUI.Instance.StartFadeOut();
         yield return new WaitForSeconds(4f);
-        winUI.SetActive(true);
+        if (AudioLoudnessDetection.micMode == MicMode.Toggle)
+        {
+            winUI.SetActive(true);
+        }
+        else
+        {
+            secretWinUI.SetActive(true);
+        }
+        
+
 
     }
 
