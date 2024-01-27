@@ -50,8 +50,10 @@ public class GameManager : MonoBehaviour
     public GameObject winUI;
 
     [Header("===== Game ======")]
+    public Transform camHolder;
     public CameraShake camShake;
     public TextMeshProUGUI debugText;
+    public GameObject madel;
 
     private void Awake()
     {
@@ -62,14 +64,14 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SwitchState(stanbyState);
-        
+
     }
 
     private void Update()
     {
         currentState.UpdateState(transform.gameObject);
 
-        if(fillMood.fillAmount != currentMood / 100f)
+        if (fillMood.fillAmount != currentMood / 100f)
         {
             fillMood.fillAmount = Mathf.Lerp(fillMood.fillAmount, currentMood / 100f, Time.deltaTime);
         }
@@ -83,6 +85,10 @@ public class GameManager : MonoBehaviour
         if (currentState == loseState)
         {
             StartCoroutine(lose());
+        }
+        else if (currentState == winState)
+        {
+            StartCoroutine(win());
         }
     }
 
@@ -100,8 +106,8 @@ public class GameManager : MonoBehaviour
         if (isLaugh)
         {
             int dif = UnityEngine.Random.Range(5, 10);
-            int laughEmoji = (emojiCount / 2) + (dif/2);
-            int exceptLaughEmoji = (emojiCount / 2) - (dif/2);
+            int laughEmoji = (emojiCount / 2) + (dif / 2);
+            int exceptLaughEmoji = (emojiCount / 2) - (dif / 2);
             int text = textCount - emojiCount;
 
             if (laughEmoji >= emojiCount / 2)
@@ -165,8 +171,8 @@ public class GameManager : MonoBehaviour
         else
         {
             int dif = UnityEngine.Random.Range(5, 10);
-            int laughEmoji = (emojiCount / 2) + (dif/2);
-            int exceptLaughEmoji = (emojiCount / 2) - (dif/2);
+            int laughEmoji = (emojiCount / 2) + (dif / 2);
+            int exceptLaughEmoji = (emojiCount / 2) - (dif / 2);
             int text = textCount - emojiCount;
 
             if (laughEmoji >= emojiCount / 2)
@@ -245,13 +251,13 @@ public class GameManager : MonoBehaviour
     public void AddMood(float amount)
     {
         currentMood += amount;
-        
+
     }
 
     public void RemoveMood(float amount)
     {
         currentMood -= amount;
-        
+
     }
 
     IEnumerator lose()
@@ -267,5 +273,21 @@ public class GameManager : MonoBehaviour
         loseUI.SetActive(true);
     }
 
+    IEnumerator win()
+    {
+        FadingUI.Instance.StartFadeIn();
+        dialogObj.SetActive(false);
+        laughtBar.SetActive(false);
+        debugText.gameObject.SetActive(false);
+        yield return new WaitForSeconds(.5f);
+        Animator anim = camHolder.GetComponent<Animator>();
+        anim.Play("WinCam");
+        madel.SetActive(true);
+        yield return new WaitForSeconds(.5f);
+        FadingUI.Instance.StartFadeOut();
+        yield return new WaitForSeconds(4f);
+        winUI.SetActive(true);
+
+    }
 
 }

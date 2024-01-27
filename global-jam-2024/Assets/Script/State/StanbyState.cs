@@ -8,11 +8,13 @@ public class StanbyState : BaseState
     public override void EnterState(GameObject go)
     {
         currentTime = 3f;
+        GameManager.Instance.currentMood = 20f;
         GameManager.Instance.dialogObj.SetActive(false);
         GameManager.Instance.laughtBar.SetActive(false);
         GameManager.Instance.loseUI.SetActive(false);
         GameManager.Instance.winUI.SetActive(false);
         GameManager.Instance.debugText.gameObject.SetActive(false);
+        GameManager.Instance.madel.SetActive(false);
 
         SupremeManager.instance.SetBoolAnim("isTalk", false);
 

@@ -1346,6 +1346,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 481590072271567319, guid: c4c1da7a728b95542b7f7d0c9f974e8e, type: 3}
+      propertyPath: fadingSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3682133859165844863, guid: c4c1da7a728b95542b7f7d0c9f974e8e, type: 3}
       propertyPath: m_Name
       value: FadingCanvas
