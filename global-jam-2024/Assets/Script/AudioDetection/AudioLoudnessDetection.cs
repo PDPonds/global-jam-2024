@@ -29,7 +29,7 @@ public static class AudioLoudnessDetection
             {
                 TurnOnMute();
             }
-            else if (Input.GetKeyUp(KeyCode.T))
+            else 
             {
                 TurnOffMute();
             }

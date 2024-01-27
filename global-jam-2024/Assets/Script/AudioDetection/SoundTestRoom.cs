@@ -72,6 +72,7 @@ public class SoundTestRoom : MonoBehaviour
         if (AudioLoudnessDetection.micMode == MicMode.Always)
         {
             AudioLoudnessDetection.micMode = MicMode.Toggle;
+            AudioLoudnessDetection.HandleMute();
         }
         else 
         {
