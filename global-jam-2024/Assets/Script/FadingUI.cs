@@ -89,8 +89,8 @@ public class FadingUI : MonoBehaviour
 
         micImage.gameObject.SetActive(!AudioLoudnessDetection.isMute);
 
-        _currentSoundValue.text = AudioLoudnessDetection.GetLoudnessFromMicrophone().ToString();
-        _currentSoundThreshold.text = AudioLoudnessDetection.Threshold.ToString();
+        _currentSoundValue.text = ((Mathf.Round(AudioLoudnessDetection.GetLoudnessFromMicrophone() * 100f)) / 100.0f).ToString();
+        _currentSoundThreshold.text = ((Mathf.Round(AudioLoudnessDetection.Threshold * 100f)) / 100.0f).ToString();
     }
 
     public void StartFadeIn() 
