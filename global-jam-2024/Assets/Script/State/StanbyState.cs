@@ -18,7 +18,7 @@ public class StanbyState : BaseState
 
         SupremeManager.instance.SetBoolAnim("isTalk", false);
 
-        SoundManager.Instance.ChageVolume("BGM", 0.05f);
+        SoundManager.Instance.ChageVolume("BGM2", 0.05f);
     }
 
     public override void UpdateState(GameObject go)

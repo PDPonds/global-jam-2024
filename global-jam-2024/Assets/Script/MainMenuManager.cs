@@ -20,6 +20,7 @@ public class MainMenuManager : MonoBehaviour
         _exitButton.onClick.AddListener(Exit);
         _soundTestButton.onClick.AddListener(GoToSoundTest);
         SoundManager.Instance.Play("BGM");
+
     }
 
     private void Update()

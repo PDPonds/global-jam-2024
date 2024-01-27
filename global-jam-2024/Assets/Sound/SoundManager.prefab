@@ -66,7 +66,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: ed1b7415216f1b24086fd757810251a3, type: 3}
     IsPlayOnAwake: 0
     IsLoop: 0
-    Vol: 1
+    Vol: 0.6
     Pitch: 1
     SpatialBlend: 0
     Source: {fileID: 0}
@@ -94,4 +94,115 @@ MonoBehaviour:
     Pitch: 1
     SpatialBlend: 0
     Source: {fileID: 0}
+  - Name: BGM
+    clip: {fileID: 8300000, guid: d5a0cc8dfecbe1f46b429f90ab0d8817, type: 3}
+    IsPlayOnAwake: 1
+    IsLoop: 1
+    Vol: 1
+    Pitch: 1
+    SpatialBlend: 0
+    Source: {fileID: 0}
+  - Name: TypeText
+    clip: {fileID: 8300000, guid: 0370cca402dbfbc4ab6ce6db232bf066, type: 3}
+    IsPlayOnAwake: 0
+    IsLoop: 0
+    Vol: 1
+    Pitch: 1
+    SpatialBlend: 0
+    Source: {fileID: 0}
+  - Name: Laugh01
+    clip: {fileID: 8300000, guid: f4bc5ff938be1d943858e24ada8ae9b4, type: 3}
+    IsPlayOnAwake: 0
+    IsLoop: 0
+    Vol: 1
+    Pitch: 1.2
+    SpatialBlend: 0
+    Source: {fileID: 0}
+  - Name: Laugh02
+    clip: {fileID: 8300000, guid: 637aa1704e46a654380edcef0caa7a48, type: 3}
+    IsPlayOnAwake: 0
+    IsLoop: 0
+    Vol: 1
+    Pitch: 0.85
+    SpatialBlend: 0
+    Source: {fileID: 0}
+  - Name: Laugh03
+    clip: {fileID: 8300000, guid: 54dc2e23bbf158b42a235fbc68165f83, type: 3}
+    IsPlayOnAwake: 0
+    IsLoop: 0
+    Vol: 1
+    Pitch: 0.77
+    SpatialBlend: 0
+    Source: {fileID: 0}
+  - Name: Laugh04
+    clip: {fileID: 8300000, guid: f5ca9caf5f39e2b4eacb734b4fc0758d, type: 3}
+    IsPlayOnAwake: 0
+    IsLoop: 0
+    Vol: 1
+    Pitch: 0.77
+    SpatialBlend: 0
+    Source: {fileID: 0}
+  - Name: Laugh05
+    clip: {fileID: 8300000, guid: 56bbebcbe3aa2b04f821ed9a8589f222, type: 3}
+    IsPlayOnAwake: 0
+    IsLoop: 0
+    Vol: 1
+    Pitch: 0.95
+    SpatialBlend: 0
+    Source: {fileID: 0}
+  - Name: Laugh06
+    clip: {fileID: 8300000, guid: c43539dfda0efa849b6527130872b280, type: 3}
+    IsPlayOnAwake: 0
+    IsLoop: 0
+    Vol: 1
+    Pitch: 0.65
+    SpatialBlend: 0
+    Source: {fileID: 0}
+  - Name: Swallow
+    clip: {fileID: 8300000, guid: 24457699b14a9a2428a8c917071ca1ff, type: 3}
+    IsPlayOnAwake: 0
+    IsLoop: 0
+    Vol: 1
+    Pitch: 1
+    SpatialBlend: 0
+    Source: {fileID: 0}
+  - Name: Cage
+    clip: {fileID: 8300000, guid: d8c377d2c5da36748a8c69a8e952217d, type: 3}
+    IsPlayOnAwake: 0
+    IsLoop: 0
+    Vol: 0.5
+    Pitch: 1
+    SpatialBlend: 0
+    Source: {fileID: 0}
+  - Name: BGM2
+    clip: {fileID: 8300000, guid: 20965d2324e97004db7c2e9446075ec4, type: 3}
+    IsPlayOnAwake: 0
+    IsLoop: 1
+    Vol: 0.5
+    Pitch: 1
+    SpatialBlend: 0
+    Source: {fileID: 0}
+  - Name: Cheer
+    clip: {fileID: 8300000, guid: d1f2fa03ae64a304e97996b970e5605e, type: 3}
+    IsPlayOnAwake: 0
+    IsLoop: 0
+    Vol: 0.5
+    Pitch: 1
+    SpatialBlend: 0
+    Source: {fileID: 0}
+  - Name: Cry
+    clip: {fileID: 8300000, guid: a37f822a4c1eab34c8c416e41371633c, type: 3}
+    IsPlayOnAwake: 0
+    IsLoop: 0
+    Vol: 0.5
+    Pitch: 1
+    SpatialBlend: 0
+    Source: {fileID: 0}
+  laughSoundList:
+  - Laugh01
+  - Laugh02
+  - Laugh03
+  - Laugh04
+  - Laugh05
+  - Laugh06
   masterVolume: 1

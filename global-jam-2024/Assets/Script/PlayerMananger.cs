@@ -32,7 +32,8 @@ public class PlayerMananger : MonoBehaviour
         {
             player.GetComponent<Animator>().Play(name);
 
-            
+
+
         }
     }
 

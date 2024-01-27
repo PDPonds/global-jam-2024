@@ -7,7 +7,8 @@ public class WinState : BaseState
 {
     public override void EnterState(GameObject go)
     {
-        SoundManager.Instance.ChageVolume("BGM", 1f);
+        SoundManager.Instance.ChageVolume("BGM2", 1f);
+        SoundManager.Instance.PlayOneShot("Cheer");
     }
 
     public override void UpdateState(GameObject go)
