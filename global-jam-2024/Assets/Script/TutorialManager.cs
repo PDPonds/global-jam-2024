@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
+
 public class TutorialManager : MonoBehaviour
 {
     [SerializeField]
@@ -39,7 +40,7 @@ public class TutorialManager : MonoBehaviour
             {
                 Next();
                 AudioLoudnessDetection.SetMute(true);
-                muteCooldonw = 3.0f;
+                muteCooldonw = 1.0f;
             }
         }
     }

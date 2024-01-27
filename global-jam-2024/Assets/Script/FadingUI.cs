@@ -84,11 +84,9 @@ public class FadingUI : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.T)) 
-        {
-            AudioLoudnessDetection.SetMute();
-            micImage.gameObject.SetActive(!AudioLoudnessDetection.isMute);
-        }
+        AudioLoudnessDetection.HandleMute();
+
+        micImage.gameObject.SetActive(!AudioLoudnessDetection.isMute);
 
         _currentSoundValue.text = AudioLoudnessDetection.GetLoudnessFromMicrophone().ToString();
         _currentSoundThreshold.text = AudioLoudnessDetection.Threshold.ToString();
