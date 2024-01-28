@@ -29,8 +29,7 @@ public class DialogState : BaseState
             PlayerMananger.instance.PlayAnimation("Wrong", 0.5f);
             SupremeManager.instance.PlayAnimation("Piss");
             SupremeManager.instance.PlayRedLight();
-            SoundManager.Instance.PlayOneShot("Swallow");
-            SoundManager.Instance.PlayOneShot("Miss");
+            PlayerMananger.instance.PlaySwallowSound(0.5f);
 
             GameManager.Instance.SwitchState(GameManager.Instance.resultState);
         }
