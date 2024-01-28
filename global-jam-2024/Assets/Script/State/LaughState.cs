@@ -22,19 +22,19 @@ public class LaughState : BaseState
 
     public override void UpdateState(GameObject go)
     {
-        currentPoint += Time.deltaTime * (GameManager.Instance.fillLaughSpeed  * 2);
+        currentPoint += Time.deltaTime * (GameManager.Instance.fillLaughSpeed * 2);
 
         Image fill = GameManager.Instance.laughFill.GetComponent<Image>();
         fill.fillAmount = currentPoint / 100f;
 
         float startLaughPoint = midTargetPoint - (GameManager.Instance.laughPointSize / 2f);
         float endLaughPoint = midTargetPoint + (GameManager.Instance.laughPointSize / 2f);
-        
+
         if (Input.GetKeyDown(KeyCode.Space) || AudioLoudnessDetection.IsMoreThanThreshold())
         {
             if (currentPoint >= startLaughPoint && currentPoint <= endLaughPoint)
             {
-                if(GameManager.Instance.isLaugh)
+                if (GameManager.Instance.isLaugh)
                 {
                     PlayerMananger.instance.PlayLaughSound(0.5f);
                     PlayerMananger.instance.HitButton();
@@ -42,33 +42,28 @@ public class LaughState : BaseState
                 else
                 {
                     PlayerMananger.instance.NoHitButton();
-                    SoundManager.Instance.PlayOneShot("Swallow");
+                    SoundManager.Instance.PlayOneShot("Miss");
                 }
             }
             else
             {
                 PlayerMananger.instance.NoHitButton();
-                SoundManager.Instance.PlayOneShot("Swallow");
+                SoundManager.Instance.PlayOneShot("Miss");
             }
 
             GameManager.Instance.SwitchState(GameManager.Instance.resultState);
         }
-        
-        if(GameManager.Instance.isLaugh)
+
+        if (currentPoint >= 100f)
         {
-            if (currentPoint >= 100f)
+            if (GameManager.Instance.isLaugh)
             {
-                SoundManager.Instance.PlayOneShot("Swallow");
+                PlayerMananger.instance.PlaySwallowSound(0.5f);
                 PlayerMananger.instance.NoHitButton();
             }
-
-        }
-        else
-        {
-            if (currentPoint >= 100f)
+            else
             {
                 PlayerMananger.instance.BeSilent();
-
             }
         }
 

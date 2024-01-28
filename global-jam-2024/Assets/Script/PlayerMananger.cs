@@ -50,14 +50,14 @@ public class PlayerMananger : MonoBehaviour
 
     IEnumerator PlayLaughSoundIE(float delay)
     {
-        // SoundManager.Instance.Play(SoundManager.Instance.RandomSound(SoundManager.Instance.laughSoundList));
-        SoundManager.Instance.Play("Laugh");
+        SoundManager.Instance.Play(SoundManager.Instance.RandomSound(SoundManager.Instance.laughSoundList));
+        //SoundManager.Instance.Play("Laugh");
         yield return new WaitForSeconds(delay);
 
         foreach (var player in allPlayerObj)
         {
-            //SoundManager.Instance.Play(SoundManager.Instance.RandomSound(SoundManager.Instance.laughSoundList));
-            SoundManager.Instance.Play("Laugh");
+            SoundManager.Instance.Play(SoundManager.Instance.RandomSound(SoundManager.Instance.laughSoundList));
+            //SoundManager.Instance.Play("Laugh");
         }
     }
 
@@ -87,7 +87,7 @@ public class PlayerMananger : MonoBehaviour
 
     public void NoHitButton()
     {
-        SoundManager.Instance.PlayOneShot("Miss");
+
         GameManager.Instance.RemoveMood(15f);
         GameManager.Instance.dialog.AddSpeed();
         PlayAnimation("Wrong", 0.5f);
@@ -110,5 +110,19 @@ public class PlayerMananger : MonoBehaviour
             bg.SetActive(true);
         }
     }
+
+    public void PlaySwallowSound(float delay)
+    {
+        StartCoroutine(PlaySwallowAndMissSoundIE(delay));
+    }
+
+    IEnumerator PlaySwallowAndMissSoundIE(float delay)
+    {
+        SoundManager.Instance.PlayOneShot("Swallow");
+        yield return new WaitForSeconds(delay);
+        SoundManager.Instance.PlayOneShot("Miss");
+
+    }
+
 
 }
