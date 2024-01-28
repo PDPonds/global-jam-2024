@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     public RectTransform laughPoint;
     public RectTransform laughBigPoint;
 
-    [HideInInspector] public float fillLaughSpeed;
+    /*[HideInInspector]*/ public float fillLaughSpeed;
 
     public float laughPointSize;
     public float bigPointSize;

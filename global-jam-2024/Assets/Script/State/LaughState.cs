@@ -22,6 +22,11 @@ public class LaughState : BaseState
 
     public override void UpdateState(GameObject go)
     {
+        if (GameManager.Instance.currentMood >= 80)
+        {
+            GameManager.Instance.fillLaughSpeed = 40;
+        }
+
         currentPoint += Time.deltaTime * (GameManager.Instance.fillLaughSpeed  * 2);
 
         Image fill = GameManager.Instance.laughFill.GetComponent<Image>();

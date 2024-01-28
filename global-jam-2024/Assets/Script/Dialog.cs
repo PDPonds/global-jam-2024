@@ -41,6 +41,7 @@ public class Dialog : MonoBehaviour
         back.sizeDelta = new Vector2(fornt.sizeDelta.x, scaleY);
 
 
+
     }
 
     public void AddSpeed()
