@@ -833,6 +833,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenuCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2079071992237015114, guid: d27da49f83caa404a9867972567ca887, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2863688581444022056, guid: d27da49f83caa404a9867972567ca887, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -941,6 +945,10 @@ PrefabInstance:
     - target: {fileID: 3682133859165844863, guid: c4c1da7a728b95542b7f7d0c9f974e8e, type: 3}
       propertyPath: m_Name
       value: FadingCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3682133859165844863, guid: c4c1da7a728b95542b7f7d0c9f974e8e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5916184873073382540, guid: c4c1da7a728b95542b7f7d0c9f974e8e, type: 3}
       propertyPath: m_Pivot.x
