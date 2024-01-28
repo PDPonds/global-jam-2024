@@ -20,7 +20,8 @@ public class LaughState : BaseState
         SoundManager.Instance.Stop("TypeText");
     }
 
-    public override void UpdateState(GameObject go)
+    public override void UpdateState(GameObject go) 
+    { 
     
         if (GameManager.Instance.currentMood >= 80)
         {
